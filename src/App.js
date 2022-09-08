@@ -12,11 +12,29 @@ import Layout from "./Routes/Layout/Layout";
 import NavBar from "./Components/Navbar/NavBar";
 import OutletContainer from "./Components/Outlet/OutletContainer";
 import NavbarMenutItem from "./Components/Navbar/NavbarMenuItem/NavbarMenutItem";
+import HamburgerMenu from "./Components/Navbar/HamburgerMenu/HamburgerMenu";
 
-// const routesPageDataContext = createContext(routesPageData);
+const showBurgerMenu = (toggleState, routePageData) => {
+	return toggleState ? (
+		<></>
+	) : (
+		<>
+			<NavbarMenutItem classNameProp={routePageData.about.classNameMenuItem}>
+				<Link to={routePageData.about.pagePath}>{routePageData.about.pageTitle}</Link>
+			</NavbarMenutItem>
+			<NavbarMenutItem classNameProp={routePageData.projects.classNameMenuItem}>
+				<Link to={routePageData.contact.pagePath}>{routePageData.contact.pageTitle}</Link>
+			</NavbarMenutItem>
+			<NavbarMenutItem classNameProp={routePageData.contact.classNameMenuItem}>
+				<Link to={routePageData.projects.pagePath}>{routePageData.projects.pageTitle}</Link>
+			</NavbarMenutItem>
+		</>
+	);
+};
 
 function App() {
 	const [routePageData] = useState(routesPageData);
+	const [toggleBurgerMenu, setToggleBurgerMenu] = useState(false);
 
 	return (
 		<BrowserRouter>
@@ -27,17 +45,8 @@ function App() {
 					element={
 						<Layout classNameProp={routePageData.layout.classNameMenuItem}>
 							<NavBar>
-								<NavbarMenutItem classNameProp={routePageData.about.classNameMenuItem}>
-									<Link to={routePageData.about.pagePath}>{routePageData.about.pageTitle}</Link>
-								</NavbarMenutItem>
-								<NavbarMenutItem classNameProp={routePageData.projects.classNameMenuItem}>
-									<Link to={routePageData.contact.pagePath}>{routePageData.contact.pageTitle}</Link>
-								</NavbarMenutItem>
-								<NavbarMenutItem classNameProp={routePageData.contact.classNameMenuItem}>
-									<Link to={routePageData.projects.pagePath}>
-										{routePageData.projects.pageTitle}
-									</Link>
-								</NavbarMenutItem>
+								<HamburgerMenu toggleBurgerMenuProp={setToggleBurgerMenu}></HamburgerMenu>
+								{showBurgerMenu(toggleBurgerMenu, routePageData)}
 							</NavBar>
 							<OutletContainer />
 						</Layout>
