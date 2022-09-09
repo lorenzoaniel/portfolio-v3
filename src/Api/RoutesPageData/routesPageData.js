@@ -1,29 +1,26 @@
 export const routesPageData = {
 	layout: {
 		pagePath: "/",
-		classNameMenuItem: "layout-menuitem",
+		pageclassName: "layout",
 	},
 	about: {
 		pageTitle: "About",
 		pagePath: "/",
-		pageGridArea: "about",
-		classNameMenuItem: "about-menuitem",
+		pageclassName: "about-menuitem",
 	},
 	projects: {
 		pageTitle: "Projects",
 		pagePath: "projects",
-		pageGridArea: "projects",
-		classNameMenuItem: "projects-menuitem",
+		pageclassName: "projects-menuitem",
 	},
 	contact: {
 		pageTitle: "Contact",
 		pagePath: "contact",
-		pageGridArea: "contact",
-		classNameMenuItem: "contact-menuitem",
+		pageclassName: "contact-menuitem",
 	},
-	noMatch: {
+	nomatch: {
 		pageTitle: "404 Not Found",
 		pagePath: "*",
-		classNameMenuItem: "nomatch-menuitem",
+		pageclassName: "nomatch-menuitem",
 	},
 };
