@@ -5,12 +5,18 @@ const HamburgerMenuContainer = styled.div`
 	background-color: blue;
 	height: 3rem;
 	width: 3rem;
+
+	grid-area: ${(props) => props.gridAreaProp};
 `;
 
 export default function HamburgerMenu(props) {
-	const { children, toggleBurgerMenuProp } = props;
+	const { children, toggleBurgerMenuProp, classNameProp, gridAreaProp } = props;
 	return (
-		<HamburgerMenuContainer onClick={() => toggleBurgerMenuProp((curr) => !curr)}>
+		<HamburgerMenuContainer
+			gridAreaProp={gridAreaProp}
+			className={classNameProp}
+			onClick={() => toggleBurgerMenuProp((curr) => !curr)}
+		>
 			{children}
 		</HamburgerMenuContainer>
 	);
