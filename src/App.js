@@ -2,6 +2,7 @@ import { BrowserRouter, Link } from "react-router-dom";
 import { Routes, Route } from "react-router";
 import { useState } from "react";
 import { routesPageData } from "./Api/RoutesPageData/routesPageData";
+import { navBarData } from "./Api/NavbarData/navBarData";
 import { GlobalStyleApp } from "./Styles/GlobalStyleApp/GlobalStyleApp";
 
 import About from "./Routes/About/About";
@@ -13,20 +14,32 @@ import NavBar from "./Components/Navbar/NavBar";
 import OutletContainer from "./Components/Outlet/OutletContainer";
 import NavbarMenutItem from "./Components/Navbar/NavbarMenuItem/NavbarMenutItem";
 import HamburgerMenu from "./Components/Navbar/HamburgerMenu/HamburgerMenu";
+import Logo from "./Components/Navbar/Logo/Logo";
 
-const showBurgerMenu = (toggleState, routePageData) => {
+const showBurgerMenu = (toggleState, routePageData, navBarData) => {
 	return toggleState ? (
 		<></>
 	) : (
 		<>
-			<NavbarMenutItem classNameProp={routePageData.about.classNameMenuItem}>
+			<NavbarMenutItem
+				gridAreaProp={navBarData.about.menuItemGridArea}
+				classNameProp={navBarData.about.menuItemclassName}
+			>
 				<Link to={routePageData.about.pagePath}>{routePageData.about.pageTitle}</Link>
 			</NavbarMenutItem>
-			<NavbarMenutItem classNameProp={routePageData.projects.classNameMenuItem}>
-				<Link to={routePageData.contact.pagePath}>{routePageData.contact.pageTitle}</Link>
-			</NavbarMenutItem>
-			<NavbarMenutItem classNameProp={routePageData.contact.classNameMenuItem}>
+
+			<NavbarMenutItem
+				gridAreaProp={navBarData.contact.menuItemGridArea}
+				classNameProp={navBarData.contact.menuItemclassName}
+			>
 				<Link to={routePageData.projects.pagePath}>{routePageData.projects.pageTitle}</Link>
+			</NavbarMenutItem>
+
+			<NavbarMenutItem
+				gridAreaProp={navBarData.projects.menuItemGridArea}
+				classNameProp={navBarData.projects.menuItemclassName}
+			>
+				<Link to={routePageData.contact.pagePath}>{routePageData.contact.pageTitle}</Link>
 			</NavbarMenutItem>
 		</>
 	);
@@ -34,6 +47,7 @@ const showBurgerMenu = (toggleState, routePageData) => {
 
 function App() {
 	const [routePageData] = useState(routesPageData);
+	const [navBarDatas] = useState(navBarData);
 	const [toggleBurgerMenu, setToggleBurgerMenu] = useState(false);
 
 	return (
@@ -45,25 +59,56 @@ function App() {
 					element={
 						<Layout classNameProp={routePageData.layout.classNameMenuItem}>
 							<NavBar>
-								<HamburgerMenu toggleBurgerMenuProp={setToggleBurgerMenu}></HamburgerMenu>
-								{showBurgerMenu(toggleBurgerMenu, routePageData)}
+								<HamburgerMenu
+									classNameProp={navBarDatas.burgermenu.menuItemclassName}
+									gridAreaProp={navBarDatas.burgermenu.navbarItemGridArea}
+									toggleBurgerMenuProp={setToggleBurgerMenu}
+								></HamburgerMenu>
+								{showBurgerMenu(toggleBurgerMenu, routePageData, navBarDatas)}
+								<Logo
+									classNameProp={navBarDatas.logo.menuItemclassName}
+									gridAreaProp={navBarDatas.logo.navbarItemGridArea}
+								></Logo>
 							</NavBar>
 							<OutletContainer />
 						</Layout>
 					}
 				>
-					<Route index element={<About pageTitleProp={routePageData.about.pageTitle} />} />
+					<Route
+						index
+						element={
+							<About
+								classNameProp={routePageData.projects.pageclassName}
+								pageTitleProp={routePageData.about.pageTitle}
+							/>
+						}
+					/>
 					<Route
 						path={routePageData.projects.pagePath}
-						element={<Projects pageTitleProp={routePageData.projects.pageTitle} />}
+						element={
+							<Projects
+								classNameProp={routePageData.projects.pageclassName}
+								pageTitleProp={routePageData.projects.pageTitle}
+							/>
+						}
 					/>
 					<Route
 						path={routePageData.contact.pagePath}
-						element={<Contact pageTitleProp={routePageData.contact.pageTitle} />}
+						element={
+							<Contact
+								classNameProp={routePageData.projects.pageclassName}
+								pageTitleProp={routePageData.contact.pageTitle}
+							/>
+						}
 					/>
 					<Route
-						path={routePageData.noMatch.pagePath}
-						element={<NoMatch pageTitle={routePageData.noMatch.pageTitle} />}
+						path={routePageData.nomatch.pagePath}
+						element={
+							<NoMatch
+								classNameProp={routePageData.nomatch.pageclassName}
+								pageTitle={routePageData.nomatch.pageTitle}
+							/>
+						}
 					/>
 				</Route>
 			</Routes>
