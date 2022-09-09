@@ -7,7 +7,7 @@ const ContactContainer = styled.div`
 `;
 
 export default function Contact(props) {
-	const { pageTitleProp } = props;
+	const { pageTitleProp, classNameProp } = props;
 
-	return <ContactContainer>{pageTitleProp}</ContactContainer>;
+	return <ContactContainer className={classNameProp}>{pageTitleProp}</ContactContainer>;
 }

@@ -7,7 +7,7 @@ const ProjectsContainer = styled.div`
 `;
 
 export default function Projects(props) {
-	const { pageTitleProp } = props;
+	const { pageTitleProp, classNameProp } = props;
 
-	return <ProjectsContainer>{pageTitleProp}</ProjectsContainer>;
+	return <ProjectsContainer className={classNameProp}>{pageTitleProp}</ProjectsContainer>;
 }

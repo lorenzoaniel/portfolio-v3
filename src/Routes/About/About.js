@@ -7,7 +7,7 @@ const AboutContainer = styled.div`
 `;
 
 export default function About(props) {
-	const { pageTitleProp } = props;
+	const { pageTitleProp, classNameProp } = props;
 
-	return <AboutContainer>{pageTitleProp}</AboutContainer>;
+	return <AboutContainer className={classNameProp}>{pageTitleProp}</AboutContainer>;
 }

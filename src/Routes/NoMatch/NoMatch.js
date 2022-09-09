@@ -7,7 +7,7 @@ const NoMatchContainer = styled.div`
 `;
 
 export default function NoMatch(props) {
-	const { pageTitle } = props;
+	const { pageTitleProp, classNameProp } = props;
 
-	return <NoMatchContainer>{pageTitle}</NoMatchContainer>;
+	return <NoMatchContainer className={classNameProp}>{pageTitleProp}</NoMatchContainer>;
 }
