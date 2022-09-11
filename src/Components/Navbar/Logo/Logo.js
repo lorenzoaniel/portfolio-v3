@@ -3,16 +3,22 @@ import styled from "styled-components";
 
 const LogoContainer = styled.div`
 	background-color: blanchedalmond;
-	height: 1vh;
-	width: 1vw;
+	height: ${(props) => props.dynamicSizeProp};
+	width: ${(props) => props.dynamicSizeProp};
+	margin: 1.5vw 0;
+	margin-left: 1vw;
 
 	grid-area: ${(props) => props.gridAreaProp};
 `;
 
 export default function Logo(props) {
-	const { children, classNameProp, gridAreaProp } = props;
+	const { children, classNameProp, gridAreaProp, dynamicSizeProp } = props;
 	return (
-		<LogoContainer gridAreaProp={gridAreaProp} className={classNameProp}>
+		<LogoContainer
+			dynamicSizeProp={dynamicSizeProp}
+			gridAreaProp={gridAreaProp}
+			className={classNameProp}
+		>
 			{children}
 		</LogoContainer>
 	);
