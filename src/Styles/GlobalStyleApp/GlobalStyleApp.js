@@ -6,6 +6,7 @@ export const GlobalStyleApp = createGlobalStyle`
     margin: 0;
     box-sizing: border-box;
     color: black;
+    /* transition: 0.1s ease-in-out; */
   }
 
   html {
