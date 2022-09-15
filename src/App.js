@@ -1,8 +1,11 @@
 import { BrowserRouter, Link } from "react-router-dom";
 import { Routes, Route } from "react-router";
 import { useState } from "react";
+
 import { routesPageData } from "./Api/RoutesPageData/routesPageData";
 import { navBarData } from "./Api/NavbarData/navBarData";
+import { hamburgerMenuData } from "./Api/NavbarData/HamburgerMenuData/hamburgerMenuData";
+
 import { GlobalStyleApp } from "./Styles/GlobalStyleApp/GlobalStyleApp";
 
 import About from "./Routes/About/About";
@@ -12,43 +15,60 @@ import NoMatch from "./Routes/NoMatch/NoMatch";
 import Layout from "./Routes/Layout/Layout";
 import NavBar from "./Components/Navbar/NavBar";
 import OutletContainer from "./Components/Outlet/OutletContainer";
-import NavbarMenutItem from "./Components/Navbar/NavbarMenuItem/NavbarMenutItem";
+import NavbarMenuItem from "./Components/Navbar/NavbarMenuItem/NavbarMenuItem";
 import HamburgerMenu from "./Components/Navbar/HamburgerMenu/HamburgerMenu";
+import HamburgerMenuItem from "./Components/Navbar/HamburgerMenu/HamburgerMenuItem/HamburgerMenuItem";
 import Logo from "./Components/Navbar/Logo/Logo";
 
-const showBurgerMenu = (toggleState, routePageData, navBarData) => {
-	return toggleState ? (
-		<></>
-	) : (
-		<>
-			<NavbarMenutItem
-				gridAreaProp={navBarData.about.menuItemGridArea}
-				classNameProp={navBarData.about.menuItemclassName}
-			>
-				<Link to={routePageData.about.pagePath}>{routePageData.about.pageTitle}</Link>
-			</NavbarMenutItem>
+import useCurrentWidth from "./Helpers/useCurrentWidth";
+import { nanoid } from "nanoid";
 
-			<NavbarMenutItem
-				gridAreaProp={navBarData.contact.menuItemGridArea}
-				classNameProp={navBarData.contact.menuItemclassName}
-			>
-				<Link to={routePageData.projects.pagePath}>{routePageData.projects.pageTitle}</Link>
-			</NavbarMenutItem>
+const showBurgerMenu = (toggleState, routePageData, navBarData, dynamicSize) => {
+	const navbarMenuItems = ["about", "projects", "contact"];
+	let navbarMenuItemArray = [];
 
-			<NavbarMenutItem
-				gridAreaProp={navBarData.projects.menuItemGridArea}
-				classNameProp={navBarData.projects.menuItemclassName}
+	for (let menuItemQuantity = 0; menuItemQuantity < 3; menuItemQuantity++) {
+		const tempCategory = navbarMenuItems[menuItemQuantity];
+
+		navbarMenuItemArray.push(
+			<NavbarMenuItem
+				gridAreaProp={navBarData[tempCategory].menuItemGridArea}
+				classNameProp={navBarData[tempCategory].menuItemclassName}
+				dynamicSizeProp={dynamicSize}
+				key={nanoid()}
 			>
-				<Link to={routePageData.contact.pagePath}>{routePageData.contact.pageTitle}</Link>
-			</NavbarMenutItem>
-		</>
-	);
+				<Link key={nanoid()} to={routePageData[tempCategory].pagePath}>
+					{routePageData[tempCategory].pageTitle}
+				</Link>
+			</NavbarMenuItem>
+		);
+	}
+
+	return toggleState ? <></> : navbarMenuItemArray;
 };
+
+const createHamburgerIcons = (hamburgerMenuDatas) => {
+	return Object.keys(hamburgerMenuDatas).map((currBurger) => {
+		return (
+			<HamburgerMenuItem
+				classNameProp={hamburgerMenuDatas[currBurger].hamburgerIconClassName}
+				gridAreaProp={hamburgerMenuDatas[currBurger].hamburgerIconGridArea}
+				key={nanoid()}
+			/>
+		);
+	});
+};
+
+const toggleLogoOnClick = () => {};
 
 function App() {
 	const [routePageData] = useState(routesPageData);
 	const [navBarDatas] = useState(navBarData);
+	const [hamburgerMenuDatas] = useState(hamburgerMenuData);
+
 	const [toggleBurgerMenu, setToggleBurgerMenu] = useState(false);
+
+	let dynamicNavbarItemSize = useCurrentWidth();
 
 	return (
 		<BrowserRouter>
@@ -62,12 +82,22 @@ function App() {
 								<HamburgerMenu
 									classNameProp={navBarDatas.burgermenu.menuItemclassName}
 									gridAreaProp={navBarDatas.burgermenu.navbarItemGridArea}
+									dynamicSizeProp={dynamicNavbarItemSize}
 									toggleBurgerMenuProp={setToggleBurgerMenu}
-								></HamburgerMenu>
-								{showBurgerMenu(toggleBurgerMenu, routePageData, navBarDatas)}
+								>
+									{createHamburgerIcons(hamburgerMenuDatas)}
+								</HamburgerMenu>
+								{showBurgerMenu(
+									toggleBurgerMenu,
+									routePageData,
+									navBarDatas,
+									dynamicNavbarItemSize
+								)}
 								<Logo
 									classNameProp={navBarDatas.logo.menuItemclassName}
 									gridAreaProp={navBarDatas.logo.navbarItemGridArea}
+									dynamicSizeProp={dynamicNavbarItemSize}
+									toggleLogoProp={toggleLogoOnClick}
 								></Logo>
 							</NavBar>
 							<OutletContainer />
@@ -78,7 +108,7 @@ function App() {
 						index
 						element={
 							<About
-								classNameProp={routePageData.projects.pageclassName}
+								classNameProp={routePageData.about.pageclassName}
 								pageTitleProp={routePageData.about.pageTitle}
 							/>
 						}
@@ -96,7 +126,7 @@ function App() {
 						path={routePageData.contact.pagePath}
 						element={
 							<Contact
-								classNameProp={routePageData.projects.pageclassName}
+								classNameProp={routePageData.contact.pageclassName}
 								pageTitleProp={routePageData.contact.pageTitle}
 							/>
 						}
