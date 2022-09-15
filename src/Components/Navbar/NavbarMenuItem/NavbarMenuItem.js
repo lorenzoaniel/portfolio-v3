@@ -8,6 +8,8 @@ const NavbarMenuItemContainer = styled.div`
 	a {
 		text-decoration: none;
 		font-size: ${(props) => props.dynamicSizeProp};
+		color: var(--grey-navbar-items);
+		text-shadow: var(--darkgrey-shadow-text-menuitems);
 	}
 `;
 
