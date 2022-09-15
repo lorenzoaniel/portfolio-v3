@@ -2,9 +2,10 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 const HamburgerMenuItemIcon = styled(motion.span)`
-	background-color: black;
+	background-color: var(--grey-navbar-items);
 	display: inline-block;
 	border-radius: 1vw;
+	/* box-shadow: var(--darkgrey-shadow-text-menuitems); */
 
 	grid-area: ${(props) => props.gridareaprop};
 `;
@@ -23,9 +24,11 @@ export default function HamburgerMenuItem(props) {
 				type: "tween",
 				ease: "easeIn",
 			},
+			boxShadow: "0 0.5rem 0.2rem rgba(33, 37, 41, 1)",
 		},
 		hover: {
 			y: "0.5vw",
+			boxShadow: ["0 0 0 rgba(33, 37, 41, 0)", "0 0.5rem 0.2rem rgba(33, 37, 41, 1)"],
 			transition: {
 				duration: 0.4,
 				type: "tween",
