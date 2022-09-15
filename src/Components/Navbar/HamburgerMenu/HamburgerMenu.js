@@ -3,24 +3,31 @@ import { motion } from "framer-motion";
 
 const HamburgerMenuContainer = styled(motion.div)`
 	/* background-color: blue; */
-	height: ${(props) => props.dynamicSizeProp};
-	width: ${(props) => props.dynamicSizeProp};
+	height: ${(props) => props.dynamicsizeprop};
+	width: ${(props) => props.dynamicsizeprop};
 	margin: 1.5vw 0;
 	margin-right: 1vw;
 
-	grid-area: ${(props) => props.gridAreaProp};
+	grid-area: ${(props) => props.gridareaprop};
 	display: grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: repeat(4, 25%);
-	grid-template-areas: "m-1" "m-2" "m-3" "m-4";
 	align-items: center;
 `;
 
 export default function HamburgerMenu(props) {
-	const { children, toggleBurgerMenuProp, classNameProp, gridAreaProp, dynamicSizeProp } = props;
+	const {
+		children,
+		toggleBurgerMenuProp,
+		classNameProp,
+		gridareaprop,
+		dynamicsizeprop,
+		toggleBurgerMenuStateProp,
+	} = props;
 
 	const HamburgerMenuVariants = {
 		rest: {
+			gridTemplateColumns: "1fr",
+			gridTemplateRows: "repeat(4, 25%)",
+			gridTemplateAreas: `"m-1" "m-2" "m-3" "m-4"`,
 			transition: {
 				staggerChildren: 0.1,
 			},
@@ -30,18 +37,31 @@ export default function HamburgerMenu(props) {
 				staggerChildren: 0.1,
 			},
 		},
+		click: {
+			gridTemplateColumns: "repeat(4, 25%)",
+			gridTemplateRows: "1fr",
+			gridTemplateAreas: `"m-1 m-2 m-3 m-4"`,
+		},
+	};
+
+	const HamburgerMenuMotionProps = {
+		variants: HamburgerMenuVariants,
+		whileHover: "hover",
+		initial: "rest",
+		animate: toggleBurgerMenuStateProp ? "click" : "rest",
+	};
+
+	const runClickAnimations = () => {
+		toggleBurgerMenuProp((curr) => !curr);
 	};
 
 	return (
 		<HamburgerMenuContainer
-			dynamicSizeProp={dynamicSizeProp}
-			gridAreaProp={gridAreaProp}
+			dynamicsizeprop={dynamicsizeprop}
+			gridareaprop={gridareaprop}
 			className={classNameProp}
-			onClick={() => toggleBurgerMenuProp((curr) => !curr)}
-			variants={HamburgerMenuVariants}
-			whileHover={"hover"}
-			initial={"rest"}
-			animate={"rest"}
+			onClick={runClickAnimations}
+			{...HamburgerMenuMotionProps}
 		>
 			{children}
 		</HamburgerMenuContainer>
