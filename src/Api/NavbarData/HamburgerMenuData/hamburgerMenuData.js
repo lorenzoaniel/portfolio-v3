@@ -13,6 +13,6 @@ export const hamburgerMenuData = {
 	},
 	m4: {
 		hamburgerIconGridArea: "m-4",
-		hamburgerIconClassName: "hamburgerIconM4s",
+		hamburgerIconClassName: "hamburgerIconM4",
 	},
 };
