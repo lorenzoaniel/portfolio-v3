@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const NavbarContainer = styled.div`
-	background-color: orange;
+	background-color: var(--grey-navbar-bg);
 	grid-area: navbar;
 	display: grid;
 	grid-template-columns: 1fr;
@@ -11,6 +11,7 @@ const NavbarContainer = styled.div`
 	gap: 0 2vw;
 	justify-content: space-around;
 	align-items: center;
+	box-shadow: var(--black-shadow-inset);
 `;
 
 export default function NavBar(props) {
