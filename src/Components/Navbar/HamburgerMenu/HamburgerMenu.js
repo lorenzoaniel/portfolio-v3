@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 const HamburgerMenuContainer = styled(motion.div)`
-	/* background-color: blue; */
 	height: ${(props) => props.dynamicsizeprop};
 	width: ${(props) => props.dynamicsizeprop};
 	margin: 1.5vw 0;
