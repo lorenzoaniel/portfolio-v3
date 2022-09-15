@@ -47,12 +47,16 @@ const showBurgerMenu = (toggleState, routePageData, navBarData, dynamicSize) => 
 	return toggleState ? <></> : navbarMenuItemArray;
 };
 
-const createHamburgerIcons = (hamburgerMenuDatas) => {
+const createHamburgerIcons = (hamburgerMenuDatas, toggleBurgerMenu) => {
 	return Object.keys(hamburgerMenuDatas).map((currBurger) => {
 		return (
 			<HamburgerMenuItem
 				classNameProp={hamburgerMenuDatas[currBurger].hamburgerIconClassName}
-				gridAreaProp={hamburgerMenuDatas[currBurger].hamburgerIconGridArea}
+				gridareaprop={hamburgerMenuDatas[currBurger].hamburgerIconGridArea}
+				toggleBurgerMenuStateProp={toggleBurgerMenu}
+				clickAnimationRotateValueProp={
+					hamburgerMenuDatas[currBurger].hamburgerIconClickAnimationRotateValue
+				}
 				key={nanoid()}
 			/>
 		);
@@ -81,11 +85,12 @@ function App() {
 							<NavBar>
 								<HamburgerMenu
 									classNameProp={navBarDatas.burgermenu.menuItemclassName}
-									gridAreaProp={navBarDatas.burgermenu.navbarItemGridArea}
-									dynamicSizeProp={dynamicNavbarItemSize}
+									gridareaprop={navBarDatas.burgermenu.navbarItemGridArea}
+									dynamicsizeprop={dynamicNavbarItemSize}
 									toggleBurgerMenuProp={setToggleBurgerMenu}
+									toggleBurgerMenuStateProp={toggleBurgerMenu}
 								>
-									{createHamburgerIcons(hamburgerMenuDatas)}
+									{createHamburgerIcons(hamburgerMenuDatas, toggleBurgerMenu)}
 								</HamburgerMenu>
 								{showBurgerMenu(
 									toggleBurgerMenu,
