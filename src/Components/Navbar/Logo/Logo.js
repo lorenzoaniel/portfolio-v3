@@ -12,12 +12,13 @@ const LogoContainer = styled.div`
 `;
 
 export default function Logo(props) {
-	const { children, classNameProp, gridAreaProp, dynamicSizeProp } = props;
+	const { children, classNameProp, gridAreaProp, dynamicSizeProp, toggleLogoProp } = props;
 	return (
 		<LogoContainer
 			dynamicSizeProp={dynamicSizeProp}
 			gridAreaProp={gridAreaProp}
 			className={classNameProp}
+			onClick={toggleLogoProp}
 		>
 			{children}
 		</LogoContainer>
