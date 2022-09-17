@@ -32,9 +32,9 @@ const showBurgerMenu = (toggleState, routePageData, navBarData, dynamicSize) => 
 
 		navbarMenuItemArray.push(
 			<NavbarMenuItem
-				gridAreaProp={navBarData[tempCategory].menuItemGridArea}
+				gridareaprop={navBarData[tempCategory].menuItemGridArea}
 				classNameProp={navBarData[tempCategory].menuItemclassName}
-				dynamicSizeProp={dynamicSize}
+				dynamicsizeprop={dynamicSize}
 				key={nanoid()}
 			>
 				<Link key={nanoid()} to={routePageData[tempCategory].pagePath}>
