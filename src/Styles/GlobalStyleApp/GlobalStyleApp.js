@@ -7,6 +7,7 @@ export const GlobalStyleApp = createGlobalStyle`
     --grey-navbar-bg: rgba(52, 58, 64, 1);
     
     --grey-navbar-items: rgba(222, 226, 230, 1);
+    --darkgrey-navbar-hover: rgba(108, 117, 125, 1);
     
     /*SHADOWS*/
     --black-shadow-inset: 0 0 1rem 0.1rem rgba(0, 0, 0, 0.8) inset;
