@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { routePageBaseStyle } from "../../../../Styles/RoutePageBaseStyle/routePageBaseStyle";
 
 const HamburgerMenuItemIcon = styled(motion.span)`
 	background-color: var(--grey-navbar-items);
@@ -27,8 +28,9 @@ export default function HamburgerMenuItem(props) {
 			boxShadow: "0 0.5rem 0.2rem rgba(33, 37, 41, 1)",
 		},
 		hover: {
-			y: "0.5vw",
+			y: "0.2vw",
 			boxShadow: ["0 0 0 rgba(33, 37, 41, 0)", "0 0.5rem 0.2rem rgba(33, 37, 41, 1)"],
+			backgroundColor: "var(--darkgrey-navbar-hover)",
 			transition: {
 				duration: 0.4,
 				type: "tween",
