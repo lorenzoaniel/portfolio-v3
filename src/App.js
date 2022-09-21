@@ -1,10 +1,12 @@
 import { BrowserRouter, Link } from "react-router-dom";
 import { Routes, Route } from "react-router";
 import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 
 import { routesPageData } from "./Api/RoutesPageData/routesPageData";
 import { navBarData } from "./Api/NavbarData/navBarData";
 import { hamburgerMenuData } from "./Api/NavbarData/HamburgerMenuData/hamburgerMenuData";
+import { logoData } from "./Api/LogoData/logoData";
 
 import { GlobalStyleApp } from "./Styles/GlobalStyleApp/GlobalStyleApp";
 
@@ -19,6 +21,7 @@ import NavbarMenuItem from "./Components/Navbar/NavbarMenuItem/NavbarMenuItem";
 import HamburgerMenu from "./Components/Navbar/HamburgerMenu/HamburgerMenu";
 import HamburgerMenuItem from "./Components/Navbar/HamburgerMenu/HamburgerMenuItem/HamburgerMenuItem";
 import Logo from "./Components/Navbar/Logo/Logo";
+import LogoLetter from "./Components/Navbar/Logo/LogoLetter/LogoLetter";
 
 import useCurrentWidth from "./Helpers/useCurrentWidth";
 import { nanoid } from "nanoid";
@@ -63,12 +66,21 @@ const createHamburgerIcons = (hamburgerMenuDatas, toggleBurgerMenu) => {
 	});
 };
 
-const toggleLogoOnClick = () => {};
+const createLogoLetters = (logoDatas, dynamicSize) => {
+	return logoDatas.map((currLetter) => {
+		return (
+			<LogoLetter dynamicsizeprop={dynamicSize} key={nanoid()}>
+				{currLetter}
+			</LogoLetter>
+		);
+	});
+};
 
 function App() {
 	const [routePageData] = useState(routesPageData);
 	const [navBarDatas] = useState(navBarData);
 	const [hamburgerMenuDatas] = useState(hamburgerMenuData);
+	const [logoDatas] = useState(logoData);
 
 	const [toggleBurgerMenu, setToggleBurgerMenu] = useState(false);
 
@@ -92,18 +104,27 @@ function App() {
 								>
 									{createHamburgerIcons(hamburgerMenuDatas, toggleBurgerMenu)}
 								</HamburgerMenu>
-								{showBurgerMenu(
-									toggleBurgerMenu,
-									routePageData,
-									navBarDatas,
-									dynamicNavbarItemSize
-								)}
-								<Logo
-									classNameProp={navBarDatas.logo.menuItemclassName}
-									gridAreaProp={navBarDatas.logo.navbarItemGridArea}
-									dynamicSizeProp={dynamicNavbarItemSize}
-									toggleLogoProp={toggleLogoOnClick}
-								></Logo>
+								<AnimatePresence>
+									{showBurgerMenu(
+										toggleBurgerMenu,
+										routePageData,
+										navBarDatas,
+										dynamicNavbarItemSize
+									)}
+								</AnimatePresence>
+								<AnimatePresence>
+									{toggleBurgerMenu ? (
+										""
+									) : (
+										<Logo
+											classNameProp={navBarDatas.logo.menuItemclassName}
+											gridareaprop={navBarDatas.logo.navbarItemGridArea}
+											dynamicsizeprop={dynamicNavbarItemSize}
+										>
+											{createLogoLetters(logoDatas, dynamicNavbarItemSize)}
+										</Logo>
+									)}
+								</AnimatePresence>
 							</NavBar>
 							<OutletContainer />
 						</Layout>
