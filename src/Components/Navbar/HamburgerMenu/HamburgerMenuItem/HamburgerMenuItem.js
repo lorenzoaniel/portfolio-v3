@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { routePageBaseStyle } from "../../../../Styles/RoutePageBaseStyle/routePageBaseStyle";
 
 const HamburgerMenuItemIcon = styled(motion.span)`
 	background-color: var(--grey-navbar-items);
