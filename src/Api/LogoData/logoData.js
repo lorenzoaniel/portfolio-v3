@@ -1,1 +1,1 @@
-export const logoData = ["M", "L", "A"];
+export const logoData = ["M.", "L.", "A."];
