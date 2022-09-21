@@ -25,9 +25,9 @@ export default function NavbarMenuItem(props) {
 
 	const NavbarMenuItemVariants = {
 		initial: {
+			opacity: [0, 1],
 			scale: 1,
 			transition: {
-				ease: "easeIn",
 				duration: 0.3,
 			},
 		},
@@ -45,6 +45,12 @@ export default function NavbarMenuItem(props) {
 				duration: 0.1,
 			},
 		},
+		exit: {
+			opacity: [1, 0],
+			transition: {
+				duration: 0.3,
+			},
+		},
 	};
 
 	const NavbarMenuItemMotionProps = {
@@ -52,6 +58,7 @@ export default function NavbarMenuItem(props) {
 		whileHover: NavbarMenuItemVariants.hover,
 		whileTap: NavbarMenuItemVariants.click,
 		animate: NavbarMenuItemVariants.initial,
+		exit: NavbarMenuItemVariants.exit,
 	};
 
 	return (
