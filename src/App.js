@@ -7,6 +7,7 @@ import { routesPageData } from "./Api/RoutesPageData/routesPageData";
 import { navBarData } from "./Api/NavbarData/navBarData";
 import { hamburgerMenuData } from "./Api/NavbarData/HamburgerMenuData/hamburgerMenuData";
 import { logoData } from "./Api/LogoData/logoData";
+import AboutSubMenuItemData from "./Api/RoutesPageData/About/AboutSubMenuItemData/AboutSubMenuItemData";
 
 import { GlobalStyleApp } from "./Styles/GlobalStyleApp/GlobalStyleApp";
 
@@ -81,6 +82,7 @@ function App() {
 	const [navBarDatas] = useState(navBarData);
 	const [hamburgerMenuDatas] = useState(hamburgerMenuData);
 	const [logoDatas] = useState(logoData);
+	const [subMenuDatas] = useState(AboutSubMenuItemData);
 
 	const [toggleBurgerMenu, setToggleBurgerMenu] = useState(false);
 
@@ -135,7 +137,7 @@ function App() {
 						element={
 							<About
 								classNameProp={routePageData.about.pageclassName}
-								pageTitleProp={routePageData.about.pageTitle}
+								subMenuDatasProp={subMenuDatas}
 							/>
 						}
 					/>
