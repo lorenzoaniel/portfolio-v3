@@ -6,14 +6,14 @@ const AboutMainTitleContainer = styled.div`
 	height: 90%;
 	width: 90%;
 	grid-area: maintitle;
-	justify-self: center;
+	/* justify-self: center; */
 
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: flex-start;
 
-	padding-left: 1rem;
+	/* padding-left: 1rem; */
 `;
 
 const AboutMainTitleh1 = styled.h1`
@@ -22,7 +22,8 @@ const AboutMainTitleh1 = styled.h1`
 
 	padding: 0.3rem;
 	border-radius: 0.5rem;
-	background-color: grey;
+	background-color: var(--darkgrey-outlet-maintitle-container);
+	box-shadow: var(--black-shadow-outletmaintitle-outset);
 `;
 
 const AboutMainTitleh3 = styled.h3`
@@ -31,7 +32,8 @@ const AboutMainTitleh3 = styled.h3`
 
 	padding: 0.3rem;
 	border-radius: 0.5rem;
-	background-color: lightgrey;
+	background-color: var(--darkgrey-outlet-sectitle-container);
+	box-shadow: var(--black-shadow-outletmaintitle-outset);
 `;
 
 function AboutMainTitle() {
