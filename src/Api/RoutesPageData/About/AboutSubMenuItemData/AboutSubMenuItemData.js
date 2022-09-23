@@ -7,9 +7,9 @@ const AboutSubMenuItemData = {
 		title: "Skills",
 		submenuitemclass: "submenu-skills",
 	},
-	certification: {
-		title: "Certification",
-		submenuitemclass: "submenu-certification",
+	socials: {
+		title: "Socials",
+		submenuitemclass: "submenu-socials",
 	},
 };
 
