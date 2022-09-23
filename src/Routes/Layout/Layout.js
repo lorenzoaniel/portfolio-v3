@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-const LayoutContainer = styled.div`
+const LayoutContainer = styled(motion.div)`
 	height: inherit;
 	width: inherit;
 	display: grid;
@@ -13,5 +14,27 @@ const LayoutContainer = styled.div`
 export default function Layout(props) {
 	const { children, classNameProp } = props;
 
-	return <LayoutContainer className={classNameProp}>{children}</LayoutContainer>;
+	// const LayoutVariants = {
+	// 	expandedNavbar: {
+	// 		gridTemplateColumns: `100%`,
+	// 	},
+	// 	collapsedNavbar: {
+	// 		gridTemplateColumns: `100%`,
+	// 	},
+	// };
+
+	// const LayoutMotionProps = {
+	// 	initial: toggleburgermenustateprop
+	// 		? LayoutVariants.collapsedNavbar
+	// 		: LayoutVariants.expandedNavbar,
+	// };
+
+	return (
+		<LayoutContainer
+			className={classNameProp}
+			// {...LayoutMotionProps}
+		>
+			{children}
+		</LayoutContainer>
+	);
 }
