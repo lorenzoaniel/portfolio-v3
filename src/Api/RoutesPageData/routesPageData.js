@@ -6,21 +6,21 @@ export const routesPageData = {
 	about: {
 		pageTitle: "About",
 		pagePath: "/",
-		pageclassName: "about-menuitem",
+		pageclassName: "about-page",
 	},
 	projects: {
 		pageTitle: "Projects",
 		pagePath: "projects",
-		pageclassName: "projects-menuitem",
+		pageclassName: "projects-page",
 	},
 	contact: {
 		pageTitle: "Contact",
 		pagePath: "contact",
-		pageclassName: "contact-menuitem",
+		pageclassName: "contact-page",
 	},
 	nomatch: {
 		pageTitle: "404 Not Found",
 		pagePath: "*",
-		pageclassName: "nomatch-menuitem",
+		pageclassName: "nomatch-page",
 	},
 };
