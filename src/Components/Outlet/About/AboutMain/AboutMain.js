@@ -9,10 +9,14 @@ const AboutMainContainer = styled.div`
 
 	border-radius: 1rem;
 	box-shadow: var(--black-shadow-outletmain-outset), var(--black-shadow-outletmain-inset);
+	display: flex;
+	justify-content: center;
+	align-items: center;
 `;
 
-function AboutMain() {
-	return <AboutMainContainer></AboutMainContainer>;
+function AboutMain(props) {
+	const { children } = props;
+	return <AboutMainContainer>{children}</AboutMainContainer>;
 }
 
 export default AboutMain;
