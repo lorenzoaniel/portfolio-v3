@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const AboutMainSubMenuItemContainer = styled.div`
 	background-color: var(--grey-outlet-submenuitem-bg);
@@ -19,19 +20,24 @@ const AboutMainSubMenuItemContainer = styled.div`
 `;
 
 const AboutMainSubMenuItemTitle = styled.span`
-	font-size: 2.5vw;
-	font-family: "Bebas Neue", cursive;
-	color: var(--grey-outlet-submenuitem-title);
+	a {
+		font-size: 2.5vw;
+		font-family: "Bebas Neue", cursive;
+		color: var(--grey-outlet-submenuitem-title);
 
-	text-shadow: var(--darkgrey-shadow-submenu-menuitems);
+		text-shadow: var(--darkgrey-shadow-submenu-menuitems);
+		text-decoration: none;
+	}
 `;
 
 function AboutMainSubMenuItem(props) {
-	const { titleprops } = props;
+	const { titleprops, pathprop, classnameprop } = props;
 
 	return (
 		<AboutMainSubMenuItemContainer>
-			<AboutMainSubMenuItemTitle>{titleprops}</AboutMainSubMenuItemTitle>
+			<AboutMainSubMenuItemTitle className={classnameprop}>
+				<Link to={pathprop}>{titleprops}</Link>
+			</AboutMainSubMenuItemTitle>
 		</AboutMainSubMenuItemContainer>
 	);
 }
