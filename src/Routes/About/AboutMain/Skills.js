@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import { AboutOutletBaseStyle } from "../../../Styles/About/AboutOutletBaseStyle/AboutOutletBaseStyle";
 
-const SkillsContainer = styled.div``;
+const SkillsContainer = styled.div`
+	${AboutOutletBaseStyle};
+`;
 
-function Skills(props) {
-	const { children } = props;
-	return <SkillsContainer>{children}</SkillsContainer>;
+export default function Skills() {
+	// const { children } = props;
+	return <SkillsContainer>skills</SkillsContainer>;
 }
-
-export default Skills;
