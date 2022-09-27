@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import { AboutOutletBaseStyle } from "../../../Styles/About/AboutOutletBaseStyle/AboutOutletBaseStyle";
 
-const SocialsContainer = styled.div``;
+const SocialsContainer = styled.div`
+	${AboutOutletBaseStyle};
+`;
 
-function Socials(props) {
-	const { children } = props;
-	return <SocialsContainer>{children}</SocialsContainer>;
+export default function Socials() {
+	// const { children } = props;
+	return <SocialsContainer>Socials</SocialsContainer>;
 }
-
-export default Socials;
