@@ -11,6 +11,7 @@ export const GlobalStyleApp = createGlobalStyle`
 
     --lightgrey-outlet-font: rgba(248,249,250,1);
     --darkgrey-outlet-bg: rgba(33,37,41,1);
+    --darkgrey-outletinner-bg: rgba(28,33,38,1);
 
     --grey-outlet-maintitle: rgba(222, 226, 230, 1);
     --grey-outlet-sectitle: rgba(233, 236, 239, 1);
