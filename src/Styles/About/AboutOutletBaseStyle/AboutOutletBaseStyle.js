@@ -6,5 +6,5 @@ export const AboutOutletBaseStyle = css`
 	width: 95%;
 	border-radius: 0.5rem;
 	box-shadow: var(--black-shadow-inset), var(--black-shadow-outset);
-	padding: 1.5vw;
+	padding: 0.7vw;
 `;
