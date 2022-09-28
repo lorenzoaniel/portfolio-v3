@@ -8,6 +8,7 @@ import { navBarData } from "./Api/NavbarData/navBarData";
 import { hamburgerMenuData } from "./Api/NavbarData/HamburgerMenuData/hamburgerMenuData";
 import { logoData } from "./Api/LogoData/logoData";
 import AboutSubMenuItemData from "./Api/RoutesPageData/About/AboutSubMenuItemData/AboutSubMenuItemData";
+import aboutPageData from "./Api/RoutesPageData/About/aboutPageData.js";
 
 import { GlobalStyleApp } from "./Styles/GlobalStyleApp/GlobalStyleApp";
 import { appLayoutStyle } from "./Styles/Layout/AppLayoutStyle/appLayoutStyle";
@@ -87,6 +88,7 @@ function App() {
 	const [hamburgerMenuDatas] = useState(hamburgerMenuData);
 	const [logoDatas] = useState(logoData);
 	const [subMenuDatas] = useState(AboutSubMenuItemData);
+	const [aboutPageDatas] = useState(aboutPageData);
 
 	const [toggleBurgerMenu, setToggleBurgerMenu] = useState(false);
 
@@ -157,8 +159,24 @@ function App() {
 							/>
 						}
 					>
-						<Route index element={<Summary />} />
-						<Route path={subMenuDatas.summary.path} element={<Summary />} />
+						<Route
+							index
+							element={
+								<Summary
+									dynamicsizeprop={dynamicNavbarItemSize}
+									summaryprop={aboutPageDatas.mainSection.introduction}
+								/>
+							}
+						/>
+						<Route
+							path={subMenuDatas.summary.path}
+							element={
+								<Summary
+									dynamicsizeprop={dynamicNavbarItemSize}
+									summaryprop={aboutPageDatas.mainSection.introduction}
+								/>
+							}
+						/>
 						<Route path={subMenuDatas.skills.path} element={<Skills />} />
 						<Route path={subMenuDatas.socials.path} element={<Socials />} />
 					</Route>
