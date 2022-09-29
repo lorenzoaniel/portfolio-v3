@@ -14,7 +14,7 @@ const SummaryContainer = styled.div`
 
 const SummaryIntroductionContainer = styled.div`
 	width: 95%;
-	height: 100%;
+	height: 95%;
 	justify-self: center;
 	grid-area: summaryintroduction;
 	display: flex;
@@ -26,6 +26,8 @@ const SummaryIntroductionContainer = styled.div`
 
 const SummaryIntroductionSpan = styled.span`
 	font-size: clamp(1rem, 0.7319rem + 1.1594vw, 2.5rem);
+	color: var(--lightgrey-summary-font-color);
+	text-shadow: var(--default-font-text-shadow);
 `;
 
 export default function Summary(props) {
