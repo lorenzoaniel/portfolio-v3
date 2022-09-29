@@ -177,7 +177,10 @@ function App() {
 								/>
 							}
 						/>
-						<Route path={subMenuDatas.skills.path} element={<Skills />} />
+						<Route
+							path={subMenuDatas.skills.path}
+							element={<Skills skilldataprop={aboutPageDatas.skillsSection} />}
+						/>
 						<Route path={subMenuDatas.socials.path} element={<Socials />} />
 					</Route>
 					<Route
