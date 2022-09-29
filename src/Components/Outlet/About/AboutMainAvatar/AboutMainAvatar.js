@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const AboutMainAvatarContainer = styled.div`
-	background-color: pink;
+	background-color: var(--darkgrey-summary-avatarframe);
 	justify-self: center;
 	grid-area: avatarcontainer;
 	width: calc(${(props) => props.dynamicsizeprop} * 3.6);
@@ -11,13 +11,13 @@ const AboutMainAvatarContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-
-	/* flex-grow: 1; */
+	box-shadow: var(--black-shadow-outletmain-inset), var(--black-shadow-outletmain-outset);
 `;
 const AboutMainAvatarImg = styled.img`
-	background-color: orange;
+	background-color: var(--darkgrey-summary-avatarinner);
 	width: 90%;
 	height: 90%;
+	border: solid 0.1rem var(--darkgrey-summary-avatarinner);
 	border-radius: 50%;
 `;
 
