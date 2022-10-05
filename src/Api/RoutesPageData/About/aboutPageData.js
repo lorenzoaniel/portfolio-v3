@@ -58,7 +58,8 @@ const aboutPageData = {
 			description: "Framer-Motion",
 			icon: <TbBrandFramer />,
 		},
-		// framermotions: { //test
+		// framermotions: {
+		// 	//test
 		// 	description: "Framer-Motion",
 		// 	icon: <TbBrandFramer />,
 		// },
