@@ -197,12 +197,7 @@ function App() {
 					/>
 					<Route
 						path={routePageData.contact.pagePath}
-						element={
-							<Contact
-								classNameProp={routePageData.contact.pageclassName}
-								pageTitleProp={routePageData.contact.pageTitle}
-							/>
-						}
+						element={<Contact classNameProp={routePageData.contact.pageclassName} />}
 					/>
 					<Route
 						path={routePageData.nomatch.pagePath}
