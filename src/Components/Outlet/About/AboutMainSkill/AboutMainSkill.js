@@ -2,9 +2,11 @@ import React from "react";
 import styled from "styled-components";
 
 const AboutMainSkillContainer = styled.div`
-	/* background-color: orange; */
+	/* height: clamp(auto, 13vw, auto);
+	width: clamp(auto, 17vw, auto); */
 	height: 13vw;
 	width: 17vw;
+	/* flex: 1 1 13vw; */
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: 70% 30%;
@@ -38,6 +40,8 @@ const AboutMainSkillIcon = styled.span`
 	box-shadow: var(--black-shadow-skillsframe-inset), var(--black-shadow-skillsframe-outset);
 
 	svg {
+		/* height: clamp(auto, 7vw, auto);
+		width: clamp(auto, 7vw, auto); */
 		height: 7vw;
 		width: 7vw;
 		fill: var(--lightgrey-skills-icon-color);
