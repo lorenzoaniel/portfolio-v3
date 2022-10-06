@@ -5,6 +5,7 @@ import { Outlet } from "react-router";
 const OutletDiv = styled.div`
 	background-color: var(--grey-outlet-bg);
 	grid-area: outlet;
+	padding: 0 7vw;
 
 	display: flex;
 	justify-content: center;

@@ -1,4 +1,5 @@
-import React from "react";
+import { React } from "react";
+import { Outlet } from "react-router";
 import styled from "styled-components";
 
 import AboutMain from "../../Components/Outlet/About/AboutMain/AboutMain";
@@ -24,6 +25,8 @@ const createMainSubMenuItems = (subMenuData) => {
 		return (
 			<AboutMainSubMenuItem
 				titleprops={subMenuData[curr].title}
+				pathprop={subMenuData[curr].path}
+				classnameprop={subMenuData[curr].submenuitemclass}
 				key={nanoid()}
 			></AboutMainSubMenuItem>
 		);
@@ -37,7 +40,9 @@ export default function About(props) {
 		<AboutContainer className={classNameProp}>
 			<AboutMainTitle></AboutMainTitle>
 			<AboutMainSubMenu>{createMainSubMenuItems(subMenuDatasProp)}</AboutMainSubMenu>
-			<AboutMain></AboutMain>
+			<AboutMain>
+				<Outlet />
+			</AboutMain>
 		</AboutContainer>
 	);
 }

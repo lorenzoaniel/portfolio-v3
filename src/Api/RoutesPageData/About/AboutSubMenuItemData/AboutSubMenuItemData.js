@@ -2,14 +2,17 @@ const AboutSubMenuItemData = {
 	summary: {
 		title: "Summary",
 		submenuitemclass: "submenu-summary",
+		path: "summary",
 	},
 	skills: {
 		title: "Skills",
 		submenuitemclass: "submenu-skills",
+		path: "skills",
 	},
-	certification: {
-		title: "Certification",
-		submenuitemclass: "submenu-certification",
+	socials: {
+		title: "Socials",
+		submenuitemclass: "submenu-socials",
+		path: "socials",
 	},
 };
 
