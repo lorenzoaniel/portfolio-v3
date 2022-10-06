@@ -32,6 +32,12 @@ export const GlobalStyleApp = createGlobalStyle`
     --grey-outlet-submenuitem-bg: rgba(73,80,87,1);
     --grey-outlet-submenu-bg: rgba(52, 58, 64, 1);
 
+    --grey-contact-form-main-bg: rgba(73,80,87);
+    --grey-contact-form-main-font: rgba(222,226,230);
+    --grey-contact-form-border-input: rgba(173, 181, 189);
+    --grey-contact-form-submit-text: rgba(248, 249, 250, 1);
+    --darkgrey-contact-form-submit-bg: rgba(52, 58, 64, 1);
+
     /*FONT-FAMILY*/
     --default-Bebas-fontstyle: "Bebas Neue", cursive;
 
@@ -53,6 +59,15 @@ export const GlobalStyleApp = createGlobalStyle`
     --darkgrey-shadow-submenu-menu-outset: 0 0 0.7rem 0.3rem rgba(0, 0, 0, 0.5);
     --darkgrey-shadow-submenu-menu-inset: 0 0 0.1rem 0.1rem rgba(33, 37, 41, 1) inset;
 
+    --darkgrey-shadow-contact-form-inset: 0 0 0.4rem 0.4rem rgba(33, 37, 41, 1) inset;
+    --darkgrey-shadow-contact-form-outset: 0 0 0.5rem 0.3rem rgba(0, 0, 0, 0.5);
+    --darkgrey-shadow-contact-form-text: 0 0.2rem 0.1rem rgba(33, 37, 41, 1);
+    --grey-contact-form-border-input: 0 0 0.3rem 0.2rem rgba(73, 80, 87);
+    --black-contact-form-border-submit: 0 0 0.3rem 0.2rem rgba(0, 0, 0);
+
+    
+
+  /* * * */
 
     padding: 0;
     margin: 0;
@@ -61,7 +76,7 @@ export const GlobalStyleApp = createGlobalStyle`
   }
 
   html {
-    height: 100vh;
+    height: 100%;
     width: 100vw;
 
     body {
