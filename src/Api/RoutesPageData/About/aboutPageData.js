@@ -1,8 +1,8 @@
-import { FaReact, FaGithub } from "react-icons/fa";
-import { TbBrandJavascript, TbBrandCss3, TbBrandFramer } from "react-icons/tb";
-import { SiStyledcomponents, SiLinkedin } from "react-icons/si";
+import { FaReact, FaGithub, FaCss3 } from "react-icons/fa";
+import { SiStyledcomponents, SiLinkedin, SiFramer } from "react-icons/si";
 import { ImHtmlFive2 } from "react-icons/im";
 import { HiBadgeCheck } from "react-icons/hi";
+import { DiJavascript1 } from "react-icons/di";
 
 const aboutPageData = {
 	mainSectionTitle: {
@@ -40,7 +40,7 @@ const aboutPageData = {
 		},
 		js: {
 			description: "JS",
-			icon: <TbBrandJavascript />,
+			icon: <DiJavascript1 />,
 		},
 		styledcomponent: {
 			description: "Styled-Components",
@@ -52,16 +52,16 @@ const aboutPageData = {
 		},
 		css: {
 			description: "CSS3",
-			icon: <TbBrandCss3 />,
+			icon: <FaCss3 />,
 		},
 		framermotion: {
 			description: "Framer-Motion",
-			icon: <TbBrandFramer />,
+			icon: <SiFramer />,
 		},
 		// framermotions: {
 		// 	//test
 		// 	description: "Framer-Motion",
-		// 	icon: <TbBrandFramer />,
+		// 	icon: <SiFramer />,
 		// },
 	},
 };
