@@ -54,7 +54,6 @@ export default function NavbarMenuItem(props) {
 	};
 
 	const NavbarMenuItemMotionProps = {
-		variants: NavbarMenuItemVariants,
 		whileHover: NavbarMenuItemVariants.hover,
 		whileTap: NavbarMenuItemVariants.click,
 		animate: NavbarMenuItemVariants.initial,
