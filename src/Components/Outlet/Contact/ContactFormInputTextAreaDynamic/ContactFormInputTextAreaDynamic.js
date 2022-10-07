@@ -17,6 +17,9 @@ const ContactFormInputTextAreaDynamicContainer = styled.div`
 const ContactFormInputTextAreaDynamicInput = styled.textarea`
 	${contactFormInputDynamicInputBaseStyle}
 	${(props) => (props.id === "contact-comments" ? contactFormInputDynamicInputCommentsStyle : "")}
+	resize: none;
+	outline: none;
+	box-shadow: var(--black-shadow-inset), var(--black-shadow-outset);
 `;
 
 function ContactFormInputTextAreaDynamic(props) {
