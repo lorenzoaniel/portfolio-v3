@@ -1,9 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
+
 import AboutMainAvatar from "../../../Components/Outlet/About/AboutMainAvatar/AboutMainAvatar";
 import { AboutOutletBaseStyle } from "../../../Styles/About/AboutOutletBaseStyle/AboutOutletBaseStyle";
 
-const SummaryContainer = styled.div`
+import { appearOpacityBaseAnimationVariants } from "../../../Animations/AppearOpacityBaseAnimation/appearOpacityBaseAnimation";
+
+const SummaryContainer = styled(motion.div)`
 	${AboutOutletBaseStyle};
 	display: grid;
 	grid-template-columns: 100%;
@@ -32,8 +36,19 @@ const SummaryIntroductionSpan = styled.span`
 
 export default function Summary(props) {
 	const { summaryprop, avatarsrcprop, avataraltprop, dynamicsizeprop } = props;
+
+	const SummaryContainerMotionVariants = {
+		initial: appearOpacityBaseAnimationVariants.initial,
+		appearanimation: appearOpacityBaseAnimationVariants.appearanimation,
+	};
+
+	const SummaryContainerMotionProps = {
+		initial: SummaryContainerMotionVariants.initial,
+		animate: SummaryContainerMotionVariants.appearanimation,
+	};
+
 	return (
-		<SummaryContainer>
+		<SummaryContainer {...SummaryContainerMotionProps}>
 			<AboutMainAvatar
 				imgsrcprop={avatarsrcprop}
 				imgaltprop={avataraltprop}
