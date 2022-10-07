@@ -1,10 +1,15 @@
 import React from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
+
 import AboutMainSkill from "../../../Components/Outlet/About/AboutMainSkill/AboutMainSkill";
 import { AboutOutletBaseStyle } from "../../../Styles/About/AboutOutletBaseStyle/AboutOutletBaseStyle";
+
 import { nanoid } from "nanoid";
 
-const SkillsContainer = styled.div`
+import { appearOpacityBaseAnimationVariants } from "../../../Animations/AppearOpacityBaseAnimation/appearOpacityBaseAnimation";
+
+const SkillsContainer = styled(motion.div)`
 	${AboutOutletBaseStyle};
 
 	display: flex;
@@ -29,5 +34,20 @@ const createAboutMainSkill = (skilldata) => {
 
 export default function Skills(props) {
 	const { skilldataprop } = props;
-	return <SkillsContainer>{createAboutMainSkill(skilldataprop)}</SkillsContainer>;
+
+	const SkillsContainerMotionVariants = {
+		initial: appearOpacityBaseAnimationVariants.initial,
+		appearanimation: appearOpacityBaseAnimationVariants.appearanimation,
+	};
+
+	const SkillsContainerMotionProps = {
+		initial: SkillsContainerMotionVariants.initial,
+		animate: SkillsContainerMotionVariants.appearanimation,
+	};
+
+	return (
+		<SkillsContainer {...SkillsContainerMotionProps}>
+			{createAboutMainSkill(skilldataprop)}
+		</SkillsContainer>
+	);
 }
