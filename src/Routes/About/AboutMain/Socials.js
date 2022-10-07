@@ -1,10 +1,15 @@
 import React from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
+
 import AboutMainSocial from "../../../Components/Outlet/About/AboutMainSocial/AboutMainSocial";
 import { AboutOutletBaseStyle } from "../../../Styles/About/AboutOutletBaseStyle/AboutOutletBaseStyle";
+
 import { nanoid } from "nanoid";
 
-const SocialsContainer = styled.div`
+import { appearOpacityBaseAnimationVariants } from "../../../Animations/AppearOpacityBaseAnimation/appearOpacityBaseAnimation";
+
+const SocialsContainer = styled(motion.div)`
 	${AboutOutletBaseStyle};
 	display: flex;
 	justify-content: space-around;
@@ -27,5 +32,20 @@ const createAboutMainSocial = (socialdata) => {
 
 export default function Socials(props) {
 	const { socialdataprops } = props;
-	return <SocialsContainer>{createAboutMainSocial(socialdataprops)}</SocialsContainer>;
+
+	const SocialsContainerMotionVariants = {
+		initial: appearOpacityBaseAnimationVariants.initial,
+		appearanimation: appearOpacityBaseAnimationVariants.appearanimation,
+	};
+
+	const SocialsContainerMotionProps = {
+		initial: SocialsContainerMotionVariants.initial,
+		animate: SocialsContainerMotionVariants.appearanimation,
+	};
+
+	return (
+		<SocialsContainer {...SocialsContainerMotionProps}>
+			{createAboutMainSocial(socialdataprops)}
+		</SocialsContainer>
+	);
 }
