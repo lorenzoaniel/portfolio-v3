@@ -15,6 +15,7 @@ const ContactFormInputDynamicContainer = styled.div`
 
 const ContactFormInputDynamicInput = styled.input`
 	${contactFormInputDynamicInputBaseStyle}
+	box-shadow: var(--black-shadow-inset), var(--black-shadow-outset);
 `;
 
 function ContactFormInputDynamic(props) {
