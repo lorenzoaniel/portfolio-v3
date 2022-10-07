@@ -36,18 +36,22 @@ function AboutMainSubMenuItem(props) {
 	const AboutMainSubMenuItemContainerMotionVariants = {
 		initial: {
 			width: `75%`,
-		},
-		hover: {
-			width: `90%`,
 			transition: {
 				duration: 0.3,
 			},
+		},
+		hover: {
+			width: `90%`,
+		},
+		click: {
+			width: `75%`,
 		},
 	};
 
 	const AboutMainSubMenuItemContainerMotionProps = {
 		initial: AboutMainSubMenuItemContainerMotionVariants.initial,
 		whileHover: AboutMainSubMenuItemContainerMotionVariants.hover,
+		whileTap: AboutMainSubMenuItemContainerMotionVariants.click,
 	};
 
 	return (
