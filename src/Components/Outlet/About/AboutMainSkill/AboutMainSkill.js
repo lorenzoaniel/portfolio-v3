@@ -12,6 +12,13 @@ const AboutMainSkillContainer = styled.div`
 	grid-template-rows: 70% 30%;
 	grid-template-areas: "skillicon" "skilldescription";
 	margin: 1vw;
+
+	&:hover {
+		svg {
+			scale: 1.1;
+			transition: scale 0.3s ease-in-out;
+		}
+	}
 `;
 
 const AboutMainSkillDescription = styled.span`
@@ -45,6 +52,7 @@ const AboutMainSkillIcon = styled.span`
 		height: 7vw;
 		width: 7vw;
 		fill: var(--lightgrey-skills-icon-color);
+		transition: scale 0.3s ease-in-out;
 	}
 `;
 
