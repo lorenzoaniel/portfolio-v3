@@ -6,7 +6,7 @@ const AboutMainSubMenuContainer = styled.div`
 	grid-area: submenu;
 
 	height: 75%;
-	width: 120%;
+	width: 120%; //extends container behind main
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
