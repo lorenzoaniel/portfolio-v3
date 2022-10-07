@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
-const AboutMainSubMenuItemContainer = styled.div`
+const AboutMainSubMenuItemContainer = styled(motion.div)`
 	background-color: var(--grey-outlet-submenuitem-bg);
 	height: 25%;
-	width: 90%;
 
 	display: flex;
 	justify-content: center;
@@ -33,8 +33,25 @@ const AboutMainSubMenuItemTitle = styled.span`
 function AboutMainSubMenuItem(props) {
 	const { titleprops, pathprop, classnameprop } = props;
 
+	const AboutMainSubMenuItemContainerMotionVariants = {
+		initial: {
+			width: `75%`,
+		},
+		hover: {
+			width: `90%`,
+			transition: {
+				duration: 0.3,
+			},
+		},
+	};
+
+	const AboutMainSubMenuItemContainerMotionProps = {
+		initial: AboutMainSubMenuItemContainerMotionVariants.initial,
+		whileHover: AboutMainSubMenuItemContainerMotionVariants.hover,
+	};
+
 	return (
-		<AboutMainSubMenuItemContainer>
+		<AboutMainSubMenuItemContainer {...AboutMainSubMenuItemContainerMotionProps}>
 			<AboutMainSubMenuItemTitle className={classnameprop}>
 				<Link to={pathprop}>{titleprops}</Link>
 			</AboutMainSubMenuItemTitle>
