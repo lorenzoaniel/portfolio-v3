@@ -1,8 +1,51 @@
 import React from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
+
+const AboutMainSocialDescriptionMotionVariants = {
+	initial: {
+		backgroundColor: `var(--darkgrey-skills-skilldescframe-bg)`,
+		transition: {
+			duration: 0.3,
+		},
+	},
+	hover: {
+		cursor: `pointer`,
+		backgroundColor: `var(--darkgrey-skills-skilldescframe-bg-hover)`,
+		transition: {
+			duration: 0.3,
+		},
+	},
+	click: {
+		backgroundColor: `var(--darkgrey-skills-skilldescframe-bg)`,
+		transition: {
+			duration: 0.3,
+		},
+	},
+};
+
+const AboutMainSocialDescriptionMotionProps = {
+	initial: AboutMainSocialDescriptionMotionVariants.initial,
+	whileHover: AboutMainSocialDescriptionMotionVariants.hover,
+	whileTap: AboutMainSocialDescriptionMotionVariants.click,
+};
+
+function AboutMainSocial(props) {
+	const { socialiconprops, descriptionprops, linkprops } = props;
+
+	return (
+		<AboutMainSocialContainer>
+			<AboutMainSocialIcon>{socialiconprops}</AboutMainSocialIcon>
+			<AboutMainSocialDescription {...AboutMainSocialDescriptionMotionProps}>
+				<a target={"_blank"} rel="noreferrer" href={linkprops}>
+					{descriptionprops}
+				</a>
+			</AboutMainSocialDescription>
+		</AboutMainSocialContainer>
+	);
+}
 
 const AboutMainSocialContainer = styled.div`
-	/* background-color: pink; */
 	height: 26vw;
 	width: 34vw;
 	flex: 1 1 20vw;
@@ -25,7 +68,7 @@ const AboutMainSocialIcon = styled.span`
 	}
 `;
 
-const AboutMainSocialDescription = styled.span`
+const AboutMainSocialDescription = styled(motion.span)`
 	a {
 		color: var(--lightgrey-skills-font-color);
 		text-shadow: var(--default-font-text-shadow);
@@ -33,27 +76,11 @@ const AboutMainSocialDescription = styled.span`
 		font-size: 2vw;
 		text-decoration: none;
 	}
-	background-color: var(--darkgrey-skills-skilldescframe-bg);
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	border-radius: 1rem;
 	box-shadow: var(--black-shadow-skillsframe-inset), var(--black-shadow-skillsframe-outset);
 `;
-
-function AboutMainSocial(props) {
-	const { socialiconprops, descriptionprops, linkprops } = props;
-
-	return (
-		<AboutMainSocialContainer>
-			<AboutMainSocialIcon>{socialiconprops}</AboutMainSocialIcon>
-			<AboutMainSocialDescription>
-				<a target={"_blank"} rel="noreferrer" href={linkprops}>
-					{descriptionprops}
-				</a>
-			</AboutMainSocialDescription>
-		</AboutMainSocialContainer>
-	);
-}
 
 export default AboutMainSocial;
