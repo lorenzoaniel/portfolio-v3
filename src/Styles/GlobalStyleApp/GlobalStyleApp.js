@@ -32,6 +32,7 @@ export const GlobalStyleApp = createGlobalStyle`
     --grey-outlet-submenuitem-bg: rgba(73,80,87,1);
     --grey-outlet-submenu-bg: rgba(52, 58, 64, 1);
 
+    --grey-contact-form-main-frame-bg: rgba(52,58,64);
     --grey-contact-form-main-bg: rgba(73,80,87);
     --grey-contact-form-main-font: rgba(222,226,230);
     --grey-contact-form-border-input: rgba(173, 181, 189);
@@ -40,6 +41,9 @@ export const GlobalStyleApp = createGlobalStyle`
 
     /*FONT-FAMILY*/
     --default-Bebas-fontstyle: "Bebas Neue", cursive;
+
+    /*INTERACTIONS*/
+    --darkgrey-skills-skilldescframe-bg-hover: rgba(82,88,94,1);
 
     /*SHADOWS*/
     --default-font-text-shadow: 0 0.3rem 0.2rem rgba(0, 0, 0, 0.8);
