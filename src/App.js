@@ -1,5 +1,5 @@
 import { Link, Navigate } from "react-router-dom";
-import { Routes, Route } from "react-router";
+import { Routes, Route, useLocation } from "react-router";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 
@@ -90,6 +90,8 @@ function App() {
 	const [subMenuDatas] = useState(AboutSubMenuItemData);
 	const [aboutPageDatas] = useState(aboutPageData);
 
+	const location = useLocation();
+
 	const [toggleBurgerMenu, setToggleBurgerMenu] = useState(false);
 
 	let dynamicNavbarItemSize = useCurrentWidth();
@@ -97,119 +99,121 @@ function App() {
 	return (
 		<>
 			<GlobalStyleApp />
-			<Routes>
-				<Route
-					path={routePageData.layout.pagePath}
-					element={
-						<Layout
-							layoutstyleprop={appLayoutStyle}
-							classNameProp={routePageData.layout.classNameMenuItem}
-						>
-							<NavBar>
-								<HamburgerMenu
-									classNameProp={navBarDatas.burgermenu.menuItemclassName}
-									gridareaprop={navBarDatas.burgermenu.navbarItemGridArea}
-									dynamicsizeprop={dynamicNavbarItemSize}
-									toggleBurgerMenuProp={setToggleBurgerMenu}
-									toggleBurgerMenuStateProp={toggleBurgerMenu}
-								>
-									{createHamburgerIcons(hamburgerMenuDatas, toggleBurgerMenu)}
-								</HamburgerMenu>
-								<AnimatePresence>
-									{showBurgerMenu(
-										toggleBurgerMenu,
-										routePageData,
-										navBarDatas,
-										dynamicNavbarItemSize
-									)}
-								</AnimatePresence>
-								<AnimatePresence>
-									{toggleBurgerMenu ? (
-										""
-									) : (
-										<Logo
-											classNameProp={navBarDatas.logo.menuItemclassName}
-											gridareaprop={navBarDatas.logo.navbarItemGridArea}
-											dynamicsizeprop={dynamicNavbarItemSize}
-										>
-											{createLogoLetters(logoDatas, dynamicNavbarItemSize)}
-										</Logo>
-									)}
-								</AnimatePresence>
-							</NavBar>
-							<OutletContainer />
-						</Layout>
-					}
-				>
+			<AnimatePresence mode={"wait"}>
+				<Routes key={location.pathname} location={location}>
 					<Route
-						index
+						path={routePageData.layout.pagePath}
 						element={
-							<Navigate
-								replace
-								to="/summary"
-							/> /*makes sure that clicking 'about' will redirect to /summary but still insures that refreshing page will keep current url */
-						}
-					/>
-					<Route
-						path={routePageData.about.pagePath}
-						element={
-							<About
-								classNameProp={routePageData.about.pageclassName}
-								subMenuDatasProp={subMenuDatas}
-							/>
+							<Layout
+								layoutstyleprop={appLayoutStyle}
+								classNameProp={routePageData.layout.classNameMenuItem}
+							>
+								<NavBar>
+									<HamburgerMenu
+										classNameProp={navBarDatas.burgermenu.menuItemclassName}
+										gridareaprop={navBarDatas.burgermenu.navbarItemGridArea}
+										dynamicsizeprop={dynamicNavbarItemSize}
+										toggleBurgerMenuProp={setToggleBurgerMenu}
+										toggleBurgerMenuStateProp={toggleBurgerMenu}
+									>
+										{createHamburgerIcons(hamburgerMenuDatas, toggleBurgerMenu)}
+									</HamburgerMenu>
+									<AnimatePresence>
+										{showBurgerMenu(
+											toggleBurgerMenu,
+											routePageData,
+											navBarDatas,
+											dynamicNavbarItemSize
+										)}
+									</AnimatePresence>
+									<AnimatePresence>
+										{toggleBurgerMenu ? (
+											""
+										) : (
+											<Logo
+												classNameProp={navBarDatas.logo.menuItemclassName}
+												gridareaprop={navBarDatas.logo.navbarItemGridArea}
+												dynamicsizeprop={dynamicNavbarItemSize}
+											>
+												{createLogoLetters(logoDatas, dynamicNavbarItemSize)}
+											</Logo>
+										)}
+									</AnimatePresence>
+								</NavBar>
+								<OutletContainer />
+							</Layout>
 						}
 					>
 						<Route
 							index
 							element={
-								<Summary
-									dynamicsizeprop={dynamicNavbarItemSize}
-									summaryprop={aboutPageDatas.mainSection.introduction}
-								/>
+								<Navigate
+									replace
+									to="/summary"
+								/> /*makes sure that clicking 'about' will redirect to /summary but still insures that refreshing page will keep current url */
 							}
 						/>
 						<Route
-							path={subMenuDatas.summary.path}
+							path={routePageData.about.pagePath}
 							element={
-								<Summary
-									dynamicsizeprop={dynamicNavbarItemSize}
-									summaryprop={aboutPageDatas.mainSection.introduction}
+								<About
+									classNameProp={routePageData.about.pageclassName}
+									subMenuDatasProp={subMenuDatas}
+								/>
+							}
+						>
+							<Route
+								index
+								element={
+									<Summary
+										dynamicsizeprop={dynamicNavbarItemSize}
+										summaryprop={aboutPageDatas.mainSection.introduction}
+									/>
+								}
+							/>
+							<Route
+								path={subMenuDatas.summary.path}
+								element={
+									<Summary
+										dynamicsizeprop={dynamicNavbarItemSize}
+										summaryprop={aboutPageDatas.mainSection.introduction}
+									/>
+								}
+							/>
+							<Route
+								path={subMenuDatas.skills.path}
+								element={<Skills skilldataprop={aboutPageDatas.skillsSection} />}
+							/>
+							<Route
+								path={subMenuDatas.socials.path}
+								element={<Socials socialdataprops={aboutPageDatas.socialsSection} />}
+							/>
+						</Route>
+						<Route
+							path={routePageData.projects.pagePath}
+							element={
+								<Projects
+									classNameProp={routePageData.projects.pageclassName}
+									pageTitleProp={routePageData.projects.pageTitle}
 								/>
 							}
 						/>
 						<Route
-							path={subMenuDatas.skills.path}
-							element={<Skills skilldataprop={aboutPageDatas.skillsSection} />}
+							path={routePageData.contact.pagePath}
+							element={<Contact classNameProp={routePageData.contact.pageclassName} />}
 						/>
 						<Route
-							path={subMenuDatas.socials.path}
-							element={<Socials socialdataprops={aboutPageDatas.socialsSection} />}
+							path={routePageData.nomatch.pagePath}
+							element={
+								<NoMatch
+									classNameProp={routePageData.nomatch.pageclassName}
+									pageTitle={routePageData.nomatch.pageTitle}
+								/>
+							}
 						/>
 					</Route>
-					<Route
-						path={routePageData.projects.pagePath}
-						element={
-							<Projects
-								classNameProp={routePageData.projects.pageclassName}
-								pageTitleProp={routePageData.projects.pageTitle}
-							/>
-						}
-					/>
-					<Route
-						path={routePageData.contact.pagePath}
-						element={<Contact classNameProp={routePageData.contact.pageclassName} />}
-					/>
-					<Route
-						path={routePageData.nomatch.pagePath}
-						element={
-							<NoMatch
-								classNameProp={routePageData.nomatch.pageclassName}
-								pageTitle={routePageData.nomatch.pageTitle}
-							/>
-						}
-					/>
-				</Route>
-			</Routes>
+				</Routes>
+			</AnimatePresence>
 		</>
 	);
 }
