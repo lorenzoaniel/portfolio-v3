@@ -32,6 +32,7 @@ export default function HamburgerMenu(props) {
 			},
 		},
 		hover: {
+			cursor: `pointer`,
 			transition: {
 				staggerChildren: 0.1,
 			},
